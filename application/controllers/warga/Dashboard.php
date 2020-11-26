@@ -6,8 +6,6 @@ class Dashboard extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//load model auth
-		$this->load->model('Login_m');
 	}
 
 	public function index()

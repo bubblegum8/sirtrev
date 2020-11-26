@@ -234,7 +234,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?=base_url('admin/login/logout')?>" class="btn btn-default btn-flat bg-red">Sign out</a>
+                  <a href="<?=base_url('Login/logout')?>" class="btn btn-default btn-flat bg-red">Sign out</a>
                 </div>
               </li>
             </ul>

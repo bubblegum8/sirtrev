@@ -14,11 +14,11 @@
 <section class="content-header">
     <!-- Content Header (Page header) -->
     <h1>
-        TAMBAH AKUN
+        <?= $judul;?>
     </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Tambah Akun</li>
+        <li class="active"><?= $judul;?></li>
       </ol>
     </section>
     <?php if ($this->session->flashdata('success')): ?>
@@ -36,32 +36,37 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'admin/CrudAkun/tambah_aksi';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url().'admin/CrudAkun/'.$aksi.'';?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
                 <label for="username">NKK</label>
-                <input class="form-control <?php echo form_error('NKK') ? 'is-invalid':'' ?>" 
-							type="text" name="NKK" placeholder="NKK"/>
+                <input class="form-control <?php echo form_error('nkk') ? 'is-invalid':'' ?>" 
+							type="text" name="nkk" placeholder="NKK" value="<?=$nkk?>"/>
                             <div class="invalid-feedback">
-									<?php echo form_error('NKK') ?>
+									<?php echo form_error('nkk') ?>
 								</div>
                 </div>
                 <div class="form-group">
                 <label for="Password">PASSWORD</label>
                 <input class="form-control <?php echo form_error('password') ? 'is-invalid':'' ?>" 
-							type="text" name="password" placeholder="Password"/>
+							type="text" name="password" placeholder="Password" value="<?=$password;?>"/>
                             <div class="invalid-feedback">
 									<?php echo form_error('password') ?>
 								</div>
                 </div>
                 
                 <div class="form-group">
-                  <label for="Lvl">Status Warga</label>
-                  <select class="form-control <?php echo form_error('statuswarga') ? 'is-invalid':'' ?>" name="statuswarga">
+                  <label for="Lvl">Role</label>
+                  <select class="form-control <?php echo form_error('role') ? 'is-invalid':'' ?>" name="role">
                     <option value="">- Pilih Role -</option>
-                    <option value="Ketua RT">Ketua RT</option>
-                    <option value="Warga">warga</option>
+                    <option value="rt" <?= $role == "rt" ? "selected" : ""; ?> >RT</option>
+                    <option value="Warga" <?= $role == "warga" ? "selected" : ""; ?>>warga</option>
                   </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="Lvl">Created</label>
+                  <input type="date" name="created" class="form-control <?php echo form_error('Created') ? 'is-invalid':'' ?>" value="<?=$created;?>"/>
                 </div>
                 
               </div>

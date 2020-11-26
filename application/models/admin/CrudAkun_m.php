@@ -1,25 +1,40 @@
 <?php 
  
 class CrudAkun_m extends CI_Model{
+
 	function tampil_data(){
-		return $this->db->get('detail_warga');
+		$query = $this->db->query("SELECT * from keluarga");
+        $data = $query->result();
+
+        return $data;
 	}
  
-	function input_data($data,$table){
+	function input_data($table,$data){
 		$this->db->insert($table,$data);
 	}
  
-	function hapus_data($where,$table){
-		$this->db->where($where);
-		$this->db->delete($table);
+	function hapus_data($nkk){
+		$this->db->where('nkk', $nkk);
+		$this->db->delete('keluarga');
 	}
  
-	function edit_data($where,$table){		
-		return $this->db->get_where($table,$where);
+	function display_row($nkk){		
+		$query = $this->db->query("select * from keluarga WHERE nkk = '".$nkk."'");
+
+        foreach ($query->result_array() as $row)
+		{
+	       return $row;
+		}
 	}
  
-	function update_data($where,$data,$table){
-		$this->db->where($where);
-		$this->db->update($table,$data);
+	function update_data($data){
+		$data = array(
+        'nkk' 		=> $data['nkk'],
+        'password'  => $data['password'],
+        'role'  	=> $data['role'],
+        'created'  	=> $data['created']
+		);
+
+		$this->db->replace('keluarga', $data);
 	}	
 }

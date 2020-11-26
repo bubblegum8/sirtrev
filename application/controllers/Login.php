@@ -8,7 +8,6 @@ class Login extends CI_Controller {
         parent::__construct();
         //load library form validasi
         $this->load->library('form_validation');
-        //load model Login_m
         $this->load->model('Login_m');
     }
 
@@ -24,23 +23,29 @@ class Login extends CI_Controller {
 
     public function submit()
     {
-        $login = $this->Login_m->login_warga($this->input->post('NKK'),$this->input->post('password'));
-        if($login == "ok"){
-            $user = $this->session->userdata('statuswarga');
-            $message = "Login Berhasil !!";
-            echo "<script type= 'text/javascript'>alert('$message');</script>";
-            if($user == "Ketua RT"){
-                redirect("rt/Dashboard","refresh");
-            }
-            else{
-                redirect("warga/Dashboard", "refresh");
-            }
-        }
-        else{
-            $message = "password salah !!";
-            echo "<script type= 'text/javascript'>alert('$message');</script>";
-            redirect("Login/index", "refresh");
+       $input['nkk']= $this->input->post('NKK');
+       $input['password'] = $this->input->post('password');
+       $login = $this->Login_m->get_user_data($input);
 
+       if($login =='ok'){
+        $role = $this->session->userdata('role');
+        if($role == 'admin'){
+            redirect('admin/Dashboard', 'refresh');
         }
+        if($role == 'warga'){
+            redirect('warga/Dashboard', 'refresh');
+        }
+        if($role == 'rt'){
+            redirect('rt/Dashboard', 'refresh');
+        }
+       }
+       else{
+        echo $login;
+       }
+    }
+
+    function logout(){
+        $this->session->sess_destroy();
+        redirect('Login', 'refresh');
     }
 }
