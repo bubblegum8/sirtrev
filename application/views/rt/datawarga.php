@@ -43,40 +43,36 @@
                 <thead>
                 <tr>
                 <th>NO</th>
-                <th>NKK</th>
                 <th>NIK</th>
-                <th>Nama Lengkap</th>
-                <th>Alamat</th>
-                <th>Tempat Lahir</th>
+                <th>Nama</th>
                 <th>Tanggal Lahir</th>
-                <th>Pendidikan</th>
-                <th>Agama</th>
-                <th>RT</th>
+                <th>Jenis Kelamin</th>
+                <th>Alamat</th>
+                <th>Pekerjaan</th>
                 <th>AKSI</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php 
-                $no = 1;
-                foreach($warga as $warga){ 
-                ?>                
-                <tr>
-                    <td><?php echo $no++?></td>
-                    <td><?php echo $warga->NKK?></td>
-                    <td><?php echo $warga->NIK?></td>
-                    <td><?php echo $warga->nama?></td>
-                    <td><?php echo $warga->alamat?></td>
-                    <td><?php echo $warga->tmpt_lahir?></td>
-                    <td><?php echo $warga->tgl_lahir ?></td>
-                    <td><?php echo $warga->pendidikan?></td>
-                    <td><?php echo $warga->agama?></td>
-                    <td><?php echo $warga->rt?></td>
-                    <td>
-                    <a href="<?= site_url('rt/CrudWarga/edit/'.$warga->id_warga)?>" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
-                    <a href="<?= site_url('rt/CrudWarga/hapus/'.$warga->id_warga)?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
-                </td>
-                </tr>
-                <?php } ?>
+                <?php
+                $i = 1;
+                foreach ($data as $row) {
+                    echo '<tr>';  
+                    echo '<td>'.$i.'</td>
+                            <td>'.$row->nik.'</td>
+                            <td>'.$row->nama.'</td>
+                            <td>'.$row->tanggal_lahir.'</td>
+                            <td>'.$row->jk.'</td>
+                            <td>'.$row->alamat.'</td>
+                            <td>'.$row->pekerjaan.'</td>
+                            <td>
+                            <a href="'.base_url("rt/CrudWarga/edit/$row->nik").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="'.base_url("rt/CrudWarga/hapus/$row->nik").'" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>';
+                    echo '</tr>';
+                    $i++;
+                }              
+                ?> 
+
                 </tbody>
             </table>
         <ul class="pagination pagination-sm no-margin pull-right">

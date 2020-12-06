@@ -14,18 +14,18 @@
 <section class="content-header">
     <!-- Content Header (Page header) -->
     <h1>
-        TAMBAH DATA WARGA
+        <?= $judul;?>
     </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Tambah Data Warga</li>
+        <li class="active"><?= $judul;?></li>
       </ol>
     </section>
     <?php if ($this->session->flashdata('success')): ?>
-      <div class="alert alert-success" role="alert">
-        <?php echo $this->session->flashdata('success'); ?>
-      </div>
-    <?php endif; ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $this->session->flashdata('success'); ?>
+                </div>
+                <?php endif; ?>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -36,68 +36,57 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'rt/CrudWarga/tambah_aksi';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url().'rt/CrudWarga/'.$aksi.'';?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
-                <label for="NKK">NKK</label>
-                <input class="form-control <?php echo form_error('NKK') ? 'is-invalid':'' ?>" type="text" name="NKK" placeholder="NKK"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('NKK') ?>
-                </div>
-                </div>
-                <div class="form-group">
                 <label for="NIK">NIK</label>
-                <input class="form-control <?php echo form_error('NIK') ? 'is-invalid':'' ?>" type="text" name="NIK" placeholder="NIK"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('NIK') ?>
-                </div>
-                </div>
-                <div class="form-group">
-                <label for="Nama">NAMA LENGKAP</label>
-                <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" type="text" name="nama" placeholder="Nama Lengkap"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('nama') ?>
-                </div>
+                <input class="form-control <?php echo form_error('nik') ? 'is-invalid':'' ?>" 
+                            type="text" name="nik" placeholder="NIK" value="<?=$nik?>"/>
+                            <div class="invalid-feedback">
+                                    <?php echo form_error('nik') ?>
+                                </div>
                 </div>
                 <div class="form-group">
-                <label for="Alamat">ALAMAT</label>
-                <input class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" type="text" name="alamat" placeholder="Alamat"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('alamat') ?>
+                <label for="Name">Nama</label>
+                <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" 
+                            type="text" name="nama" placeholder="Nama" value="<?=$nama;?>"/>
+                            <div class="invalid-feedback">
+                                    <?php echo form_error('nama') ?>
+                                </div>
                 </div>
-                </div>
+                
                 <div class="form-group">
-                <label for="TempatLahir">TEMPAT LAHIR</label>
-                <input class="form-control <?php echo form_error('tmpt_lahir') ? 'is-invalid':'' ?>" 
-                type="text" name="tmpt_lahir" placeholder="Tempat Lahir"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('tmpt_lahir') ?>
+                  <label for="tanggal_lahir">Tanggal Lahir</label>
+                  <input type="date" name="tgl_lahir" class="form-control <?php echo form_error('tanggal_lahir') ? 'is-invalid':'' ?>" value="<?=$tanggal_lahir;?>"/>
                 </div>
-                </div>
+
                 <div class="form-group">
-                <label for="TanggalLahir">TANGGAL LAHIR</label>
-                <input class="form-control <?php echo form_error('tgl_lahir') ? 'is-invalid':'' ?>" 
-                type="text" name="tgl_lahir" placeholder="00/00/0000"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('tgl_lahir') ?>
+                  <label for="">Jenis Kelamin</label>
+                  <select class="form-control <?php echo form_error('jk') ? 'is-invalid':'' ?>" name="jk">
+                    <option value="">- Pilih Jenis Kelamin -</option>
+                    <option value="L" <?= $role == "L" ? "selected" : ""; ?> >L</option>
+                    <option value="P" <?= $role == "P" ? "selected" : ""; ?> >P</option>
+                  </select>
                 </div>
-                </div>
+
                 <div class="form-group">
-                <label for="Pendidikan">PENDIDIKAN</label>
-                <input class="form-control <?php echo form_error('pendidikan') ? 'is-invalid':'' ?>" 
-                type="text" name="pendidikan" placeholder="Pendidikan"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('pendidikan') ?>
+                <label for="Alamat">Alamat</label>
+                <input class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
+                            type="text" name="alamat" placeholder="Alamat" value="<?=$alamat;?>"/>
+                            <div class="invalid-feedback">
+                                    <?php echo form_error('alamat') ?>
+                                </div>
                 </div>
-                </div>
+                
                 <div class="form-group">
-                <label for="Agama">AGAMA</label>
-                <input class="form-control <?php echo form_error('agama') ? 'is-invalid':'' ?>" 
-                type="text" name="agama" placeholder="Agama"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('agama') ?>
+                <label for="Pekerjaan">Pekerjaan</label>
+                <input class="form-control <?php echo form_error('pekerjaan') ? 'is-invalid':'' ?>" 
+                            type="text" name="pekerjaan" placeholder="Pekerjaan" value="<?=$pekerjaan;?>"/>
+                            <div class="invalid-feedback">
+                                    <?php echo form_error('pekerjaan') ?>
+                                </div>
                 </div>
-                </div>
+
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
