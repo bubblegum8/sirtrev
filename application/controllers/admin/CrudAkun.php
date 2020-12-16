@@ -52,12 +52,12 @@ class CrudAkun extends CI_Controller{
 	}
 
 	function submit_edit(){
-		$input['nkk'] 		= $this->input->post('nkk');
+		$id 				= $this->input->post('nkk');
 		$input['password'] 	= $this->input->post('password');
 		$input['role'] 		= $this->input->post('role');
 		$input['created'] 	= $this->input->post('created');
 
-		$this->CrudAkun_m->update_data($input);
+		$this->CrudAkun_m->updateAkun($input, $id);
 
 		redirect('admin/CrudAkun', 'refresh'); 
 	}

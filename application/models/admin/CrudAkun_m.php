@@ -27,14 +27,8 @@ class CrudAkun_m extends CI_Model{
 		}
 	}
  
-	function update_data($data){
-		$data = array(
-        'nkk' 		=> $data['nkk'],
-        'password'  => $data['password'],
-        'role'  	=> $data['role'],
-        'created'  	=> $data['created']
-		);
-
-		$this->db->replace('keluarga', $data);
-	}	
+	 public function updateAkun($data, $id){
+        $this->db->where("nkk", $id);
+        $this->db->update("keluarga", $data);
+    }
 }
