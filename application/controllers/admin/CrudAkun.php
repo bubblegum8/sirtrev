@@ -53,6 +53,7 @@ class CrudAkun extends CI_Controller{
 
 	function submit_edit(){
 		$id 				= $this->input->post('nkk');
+		$input['nkk']		= $this->input->post('nkk');
 		$input['password'] 	= $this->input->post('password');
 		$input['role'] 		= $this->input->post('role');
 		$input['created'] 	= $this->input->post('created');
