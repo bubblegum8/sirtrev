@@ -3,7 +3,7 @@
 class CrudWarga_m extends CI_Model{
 
 	function tampil_data(){
-		$query = $this->db->query("SELECT * from detail_warga");
+		$query = $this->db->query("SELECT * from detail_keluarga");
         $data = $query->result();
 
         return $data;
@@ -19,7 +19,7 @@ class CrudWarga_m extends CI_Model{
 	}
  
 	function display_row($nik){		
-		$query = $this->db->query("select * from detail_warga WHERE nik = '".$nik."'");
+		$query = $this->db->query("select * from detail_keluarga WHERE nik = '".$nik."'");
 
         foreach ($query->result_array() as $row)
 		{
@@ -37,6 +37,6 @@ class CrudWarga_m extends CI_Model{
         'pekerjaan'	 	=> $data['pekerjaan']
 		);
 
-		$this->db->replace('detail_warga', $data);
+		$this->db->replace('detail_keluarga', $data);
 	}	
 }

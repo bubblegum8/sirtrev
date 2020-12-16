@@ -14,18 +14,18 @@
 <section class="content-header">
     <!-- Content Header (Page header) -->
     <h1>
-        TAMBAH SURAT
+        <?= $judul;?>
     </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Tambah Surat</li>
+        <li class="active"><?= $judul;?></li>
       </ol>
     </section>
     <?php if ($this->session->flashdata('success')): ?>
-      <div class="alert alert-success" role="alert">
-        <?php echo $this->session->flashdata('success'); ?>
-      </div>
-    <?php endif; ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $this->session->flashdata('success'); ?>
+                </div>
+                <?php endif; ?>
     <!-- Main content -->
     <section class="content">
       <div class="row">
@@ -36,28 +36,28 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'rt/surat/tambah_aksi';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url().'rt/CrudSurat/'.$aksi.'';?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
-                <label for="Surat">NO SURAT</label>
-                <input class="form-control <?php echo form_error('no_surat') ? 'is-invalid':'' ?>" type="text" name="no_surat" placeholder="No Surat"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('no_surat') ?>
-                </div>
-                </div>
-                <div class="form-group">
-                <label for="nama">NAMA</label>
-                <input class="form-control <?php echo form_error('id_warga') ? 'is-invalid':'' ?>" type="text" name="id_warga" placeholder="Nama Lengkap"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('id_warga') ?>
-                </div>
+                <label for="JENIS SURAT">Jenis Surat</label>
+                <input class="form-control <?php echo form_error('jenis_surat') ? 'is-invalid':'' ?>"
+                            type="text" name="jenis_surat" placeholder="Jenis Surat" value="<?=$jenis_surat?>"/>
+                            <div class="invalid-feedback">
+                                    <?php echo form_error('jenis_surat') ?>
+                                </div>
                 </div>
                 <div class="form-group">
-                <label for="Alamat">KEPERLUAN</label>
-                <input class="form-control <?php echo form_error('keperluan') ? 'is-invalid':'' ?>" type="text" name="keperluan" placeholder="Keperluan"/>
-                <div class="invalid-feedback">
-                <?php echo form_error('keperluan') ?>
+                <label for="Keterangan">Keterangan</label>
+                <input class="form-control <?php echo form_error('keterangan') ? 'is-invalid':'' ?>" 
+                             type="text" name="keterangan" placeholder="Keterangan" value="<?=$keterangan;?>"/>
+                            <div class="invalid-feedback">
+                                    <?php echo form_error('keterangan') ?>
+                                </div>
                 </div>
+                
+                <div class="form-group">
+                  <label for="tanggal">Tanggal Pembuatan</label>
+                  <input type="date" name="tanggal" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" value="<?=$tanggal;?>"/>
                 </div>
               </div>
               <!-- /.box-body -->

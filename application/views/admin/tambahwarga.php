@@ -64,8 +64,8 @@
                   <label for="">Jenis Kelamin</label>
                   <select class="form-control <?php echo form_error('jk') ? 'is-invalid':'' ?>" name="jk">
                     <option value="">- Pilih Jenis Kelamin -</option>
-                    <option value="L" <?= $role == "L" ? "selected" : ""; ?> >L</option>
-                    <option value="P" <?= $role == "P" ? "selected" : ""; ?> >P</option>
+                    <option value="L">L</option>
+                    <option value="P">P</option>
                   </select>
                 </div>
 

@@ -13,12 +13,12 @@
     <!-- Content Header (Page header) -->
 <section class="content-header">
       <h1>
-        Surat Pengantar RT
+        Pengajuan Surat
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Surat Pengantar RT</li>
+        <li class="active">Pengajuan Surat</li>
       </ol>
     </section>
     <section class="content">
@@ -26,7 +26,7 @@
         <div class="col-xs-12">
     <div class="box box-primary">
         <div class="box-header">
-        <a href="<?= site_url()?>rt/Surat/tambah" class="btn btn-primary" role="button" title="Tambah Data"><i class="glyphicon glyphicon-plus"></i> Tambah Surat</a>
+        <a href="<?= site_url()?>rt/CrudSurat/tambah" class="btn btn-primary" role="button" title="Tambah Data"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
         <div class="box-tools">
                 <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
                 <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -43,29 +43,30 @@
                 <thead>
                 <tr>
                 <th>NO</th>
-                <th>No Surat</th>
-                <th>Nama</th>
-                <th>Keperluan</th>
+                <th>Jenis Surat</th>
+                <th>Keterangan</th>
+                <th>Tanggal Pembuatan</th>
                 <th>AKSI</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php 
-                $no = 1;
-                foreach($surat as $surat){ 
-                ?>                
-                <tr>
-                    <td><?php echo $no++?></td>
-                    <td><?php echo $surat->no_surat?></td>
-                    <td><?php echo $surat->nama?></td>
-                    <td><?php echo $surat->keperluan?></td>
-                    <td>
-                    <a href="<?= site_url('rt/surat/edit/'.$surat->id_surat)?>" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
-                    <a href="<?= site_url('rt/surat/hapus/'.$surat->id_surat)?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
-                    <a href="<?= site_url('rt/cetaksurat/')?>" class="btn btn-warning" role="button" title="Cetak Surat"><i class="glyphicon glyphicon-print"></i></a>
-                </td>
-                </tr>
-                <?php } ?>
+                <?php
+                $i = 1;
+                foreach ($data as $row) {
+                    echo '<tr>';  
+                    echo '<td>'.$i.'</td>
+                            <td>'.$row->jenis_surat.'</td>
+                            <td>'.$row->keterangan.'</td>
+                            <td>'.$row->tanggal.'</td>
+                            <td>
+                            <a href="'.base_url("rt/CrudSurat/edit/$row->id_surat").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="'.base_url("rt/CrudSurat/hapus/$row->id_surat").'" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>';
+                    echo '</tr>';
+                    $i++;
+                }              
+                ?> 
+
                 </tbody>
             </table>
         <ul class="pagination pagination-sm no-margin pull-right">

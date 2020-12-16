@@ -36,18 +36,18 @@ class CrudWarga extends CI_Controller{
 
 		$this->CrudWarga_m->input_data('detail_keluarga', $input);
 
-		redirect('admin/CrudAkun', 'refresh');
+		redirect('admin/CrudWarga', 'refresh');
 
 	}
 
 	function hapus(){
-		$nik = $this->uri->segment('3');
+		$nik = $this->uri->segment('4');
 		$this->CrudWarga_m->hapus_data($nik);
 		redirect('admin/CrudWarga', 'refresh');
 	}
 
 	function edit(){
-		$nik = $this->uri->segment('3');
+		$nik = $this->uri->segment('4');
 		$result = $this->CrudWarga_m->display_row($nik);
 		$result['aksi'] = 'submit_edit';
 		$result['judul'] = 'EDIT WARGA';
@@ -62,7 +62,7 @@ class CrudWarga extends CI_Controller{
 		$input['alamat'] 		= $this->input->post('alamat');
 		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
 
-		$this->CrudAkun_m->update_data($input);
+		$this->CrudWarga_m->update_data($input);
 
 		redirect('admin/CrudWarga', 'refresh'); 
 	}
