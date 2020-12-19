@@ -9,74 +9,61 @@ class CrudWarga extends CI_Controller{
 	}
  
 	function index(){
-		$data['warga'] = $this->CrudWarga_m->tampil_data()->result();
-		$this->load->view('warga/datawarga',$data);
+		$result['data'] = $this->CrudWarga_m->tampil_data();
+		$this->load->view('warga/datawarga', $result);
+
 	}
 
 	function tambah(){
-		$this->load->view('warga/tambahwarga');
-	}
-	// menghandel inputan dari form
-	function tambah_aksi(){
-		$NIK 			= $this->input->post('NIK');
-		$nama 			= $this->input->post('nama');
-		$alamat 		= $this->input->post('alamat');
-		$tmpt_lahir		= $this->input->post('tmpt_lahir');
-		$tgl_lahir 		= $this->input->post('tgl_lahir');
-		$pendidikan 	= $this->input->post('pendidikan');
-		$agama 			= $this->input->post('agama');
- 
-		$data = array(
-			'NIK'				=> $NIK,
-			'nama' 				=> $nama,
-			'alamat' 			=> $alamat,
-			'tmpt_lahir' 		=> $tmpt_lahir,
-			'tgl_lahir' 		=> $tgl_lahir,
-			'pendidikan' 		=> $pendidikan,
-			'agama'		 		=> $agama
-			);
-		$this->CrudWarga_m->input_data($data,'warga');
-		redirect('warga/crudwarga/index');
+		$result['nik'] = '';
+		$result['nama'] = '';
+		$result['tanggal_lahir'] = '';
+		$result['jk'] = '';
+		$result['alamat'] = '';
+		$result['pekerjaan'] = '';
+		$result['aksi'] = 'submit_tambah';
+		$result['judul'] = 'TAMBAH WARGA';
+		$this->load->view('warga/tambahwarga', $result);
 	}
 
-	function hapus($id_warga){
-		$where = array('id_warga' => $id_warga);
-		$this->CrudWarga_m->hapus_data($where,'warga');
-		redirect('warga/crudwarga/index');
+	function submit_tambah(){
+		$input['nik'] 			= $this->input->post('nik');
+		$input['nama'] 			= $this->input->post('nama');
+		$input['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+		$input['jk'] 			= $this->input->post('jk');
+		$input['alamat'] 		= $this->input->post('alamat');
+		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
+
+		$this->CrudWarga_m->input_data('detail_keluarga', $input);
+
+		redirect('warga/CrudWarga', 'refresh');
+
 	}
 
-	function edit($id_warga){
-		$where = array('id_warga' => $id_warga);
-		$data['warga'] = $this->CrudWarga_m->edit_data($where,'warga')->result();
-		$this->load->view('warga/editwarga',$data);
+	function hapus(){
+		$nik = $this->uri->segment('4');
+		$this->CrudWarga_m->hapus_data($nik);
+		redirect('warga/CrudWarga', 'refresh');
 	}
 
-	function update(){
-		$id_warga 		= $this->input->post('id_warga');
-		$NIK 			= $this->input->post('NIK');
-		$nama 			= $this->input->post('nama');
-		$alamat 		= $this->input->post('alamat');
-		$tmpt_lahir		= $this->input->post('tmpt_lahir');
-		$tgl_lahir 		= $this->input->post('tgl_lahir');
-		$pendidikan 	= $this->input->post('pendidikan');
-		$agama 			= $this->input->post('agama');
- 
-	$data = array(
-		'NIK'				=> $NIK,
-		'nama' 				=> $nama,
-		'alamat' 			=> $alamat,
-		'tmpt_lahir' 		=> $tmpt_lahir,
-		'tgl_lahir' 		=> $tgl_lahir,
-		'pendidikan' 		=> $pendidikan,
-		'agama'		 		=> $agama
-	);
- 
-	$where = array(
-		'id_warga' => $id_warga
-	);
- 
-	$this->CrudWarga_m->update_data($where,$data,'warga');
-	redirect('warga/crudwarga/index');
+	function edit(){
+		$nik = $this->uri->segment('4');
+		$result = $this->CrudWarga_m->display_row($nik);
+		$result['aksi'] = 'submit_edit';
+		$result['judul'] = 'EDIT WARGA';
+		$this->load->view('warga/tambahwarga', $result);
+	}
 
-}
+	function submit_edit(){
+		$id 		 			= $this->input->post('nik');
+		$input['nama'] 			= $this->input->post('nama');
+		$input['tanggal_lahir']	= $this->input->post('tanggal_lahir');
+		$input['jk'] 			= $this->input->post('jk');
+		$input['alamat'] 		= $this->input->post('alamat');
+		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
+
+		$this->CrudWarga_m->updateWarga($input, $id);
+
+		redirect('warga/CrudWarga', 'refresh'); 
+	}
 }

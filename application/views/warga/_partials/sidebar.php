@@ -31,7 +31,7 @@
           </a>
         </li>
         <li>
-          <a href="<?= site_url()?>warga/profilwarga">
+          <a href="<?= site_url()?>warga/crudwarga">
             <i class="fa fa-users"></i>
             <span>Profil Keluarga</span>
           </a>
