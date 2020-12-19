@@ -40,21 +40,21 @@
             <div class="box-body">
                 <div class="form-group">
                 <label for="NIK">NIK</label>
-                <input class="form-control <?php echo form_error('NIK') ? 'is-invalid':'' ?>" type="text" name="NIK" placeholder="NIK"/>
+                <input class="form-control <?php echo form_error('NIK') ? 'is-invalid':'' ?>" type="text" name="NIK" placeholder="NIK" required/>
                 <div class="invalid-feedback">
                 <?php echo form_error('NIK') ?>
                 </div>
                 </div>
                 <div class="form-group">
                 <label for="Nama">NAMA LENGKAP</label>
-                <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" type="text" name="nama" placeholder="Nama Lengkap"/>
+                <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" type="text" name="nama" placeholder="Nama Lengkap" required/>
                 <div class="invalid-feedback">
                 <?php echo form_error('nama') ?>
                 </div>
                 </div>
                 <div class="form-group">
                 <label for="Alamat">ALAMAT</label>
-                <input class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" type="text" name="alamat" placeholder="Alamat"/>
+                <input class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" type="text" name="alamat" placeholder="Alamat" required/>
                 <div class="invalid-feedback">
                 <?php echo form_error('alamat') ?>
                 </div>
@@ -62,7 +62,7 @@
                 <div class="form-group">
                 <label for="TempatLahir">TEMPAT LAHIR</label>
                 <input class="form-control <?php echo form_error('tmpt_lahir') ? 'is-invalid':'' ?>" 
-                type="text" name="tmpt_lahir" placeholder="Tempat Lahir"/>
+                type="text" name="tmpt_lahir" placeholder="Tempat Lahir" required/>
                 <div class="invalid-feedback">
                 <?php echo form_error('tmpt_lahir') ?>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="form-group">
                 <label for="TanggalLahir">TANGGAL LAHIR</label>
                 <input class="form-control <?php echo form_error('tgl_lahir') ? 'is-invalid':'' ?>" 
-                type="text" name="tgl_lahir" placeholder="00/00/0000"/>
+                type="text" name="tgl_lahir" placeholder="00/00/0000" required/>
                 <div class="invalid-feedback">
                 <?php echo form_error('tgl_lahir') ?>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="form-group">
                 <label for="Pendidikan">PENDIDIKAN</label>
                 <input class="form-control <?php echo form_error('pendidikan') ? 'is-invalid':'' ?>" 
-                type="text" name="pendidikan" placeholder="Pendidikan"/>
+                type="text" name="pendidikan" placeholder="Pendidikan" required/>
                 <div class="invalid-feedback">
                 <?php echo form_error('pendidikan') ?>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="form-group">
                 <label for="Agama">AGAMA</label>
                 <input class="form-control <?php echo form_error('agama') ? 'is-invalid':'' ?>" 
-                type="text" name="agama" placeholder="Agama"/>
+                type="text" name="agama" placeholder="Agama"required/>
                 <div class="invalid-feedback">
                 <?php echo form_error('agama') ?>
                 </div>

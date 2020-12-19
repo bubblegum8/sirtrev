@@ -41,7 +41,7 @@
                 <div class="form-group">
                 <label for="NIK">NIK</label>
                 <input class="form-control <?php echo form_error('nik') ? 'is-invalid':'' ?>" 
-                            type="text" name="nik" placeholder="NIK" value="<?=$nik?>"/>
+                            type="text" name="nik" placeholder="NIK" value="<?=$nik?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('nik') ?>
                                 </div>
@@ -49,7 +49,7 @@
                 <div class="form-group">
                 <label for="Name">Nama</label>
                 <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" 
-                            type="text" name="nama" placeholder="Nama" value="<?=$nama;?>"/>
+                            type="text" name="nama" placeholder="Nama" value="<?=$nama;?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('nama') ?>
                                 </div>
@@ -62,7 +62,7 @@
 
                 <div class="form-group">
                   <label for="">Jenis Kelamin</label>
-                  <select class="form-control <?php echo form_error('jk') ? 'is-invalid':'' ?>" name="jk">
+                  <select class="form-control <?php echo form_error('jk') ? 'is-invalid':'' ?>" name="jk" required>
                     <option value="">- Pilih Jenis Kelamin -</option>
                     <option value="L">L</option>
                     <option value="P">P</option>
@@ -72,7 +72,7 @@
                 <div class="form-group">
                 <label for="Alamat">Alamat</label>
                 <input class="form-control <?php echo form_error('alamat') ? 'is-invalid':'' ?>" 
-                            type="text" name="alamat" placeholder="Alamat" value="<?=$alamat;?>"/>
+                            type="text" name="alamat" placeholder="Alamat" value="<?=$alamat;?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('alamat') ?>
                                 </div>
@@ -81,7 +81,7 @@
                 <div class="form-group">
                 <label for="Pekerjaan">Pekerjaan</label>
                 <input class="form-control <?php echo form_error('pekerjaan') ? 'is-invalid':'' ?>" 
-                            type="text" name="pekerjaan" placeholder="Pekerjaan" value="<?=$pekerjaan;?>"/>
+                            type="text" name="pekerjaan" placeholder="Pekerjaan" value="<?=$pekerjaan;?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('pekerjaan') ?>
                                 </div>
