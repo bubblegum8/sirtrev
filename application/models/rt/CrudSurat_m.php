@@ -14,7 +14,7 @@ class CrudSurat_m extends CI_Model{
 	}
  
 	function hapus_data($id_surat){
-		$this->db->where('id_surat', $nik);
+		$this->db->where('id_surat', $id_surat);
 		$this->db->delete('suratpengantar');
 	}
  
@@ -27,14 +27,8 @@ class CrudSurat_m extends CI_Model{
 		}
 	}
  
-	function update_data($data){
-		$data = array(
-        'id_surat' 			=> $data['id_surat'],
-        'jenis_surat' 		=> $data['jenis_surat'],
-        'keterangan'		=> $data['keterangan'],
-        'tanggal'  			=> $data['tanggal']
-		);
-
-		$this->db->replace('suratpengantar', $data);
-	}	
+	public function updateWarga($data, $id){
+        $this->db->where("id_surat", $id);
+        $this->db->update("suratpengantar", $data);
+    }	
 }

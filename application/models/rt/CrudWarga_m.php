@@ -15,7 +15,7 @@ class CrudWarga_m extends CI_Model{
  
 	function hapus_data($nik){
 		$this->db->where('nik', $nik);
-		$this->db->delete('detail_warga');
+		$this->db->delete('detail_keluarga');
 	}
  
 	function display_row($nik){		
@@ -27,16 +27,8 @@ class CrudWarga_m extends CI_Model{
 		}
 	}
  
-	function update_data($data){
-		$data = array(
-        'nik' 			=> $data['nik'],
-        'nama'  		=> $data['nama'],
-        'tanggal_lahir' => $data['tanggal_lahir'],
-        'jk'	  		=> $data['jk'],
-        'alamat'		=> $data['alamat'],
-        'pekerjaan'	 	=> $data['pekerjaan']
-		);
-
-		$this->db->replace('detail_keluarga', $data);
-	}	
+	public function updateWarga($data, $id){
+        $this->db->where("nik", $id);
+        $this->db->update("detail_keluarga", $data);
+    }	
 }

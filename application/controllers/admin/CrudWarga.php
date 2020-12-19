@@ -27,11 +27,11 @@ class CrudWarga extends CI_Controller{
 	}
 
 	function submit_tambah(){
-		$input['nik'] 	= $this->input->post('nik');
-		$input['nama'] 	= $this->input->post('nama');
-		$input['tanggal_lahir'] 		= $this->input->post('tanggal_lahir');
-		$input['jk'] 	= $this->input->post('jk');
-		$input['alamat'] 	= $this->input->post('alamat');
+		$input['nik'] 			= $this->input->post('nik');
+		$input['nama'] 			= $this->input->post('nama');
+		$input['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+		$input['jk'] 			= $this->input->post('jk');
+		$input['alamat'] 		= $this->input->post('alamat');
 		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
 
 		$this->CrudWarga_m->input_data('detail_keluarga', $input);
@@ -55,14 +55,14 @@ class CrudWarga extends CI_Controller{
 	}
 
 	function submit_edit(){
-		$input['nik'] 			= $this->input->post('nik');
+		$id 		 			= $this->input->post('nik');
 		$input['nama'] 			= $this->input->post('nama');
-		$input['tanggal_lahir'] = $this->input->post('tanggal_lahir');
+		$input['tanggal_lahir']	= $this->input->post('tanggal_lahir');
 		$input['jk'] 			= $this->input->post('jk');
 		$input['alamat'] 		= $this->input->post('alamat');
 		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
 
-		$this->CrudWarga_m->update_data($input);
+		$this->CrudWarga_m->updateWarga($input, $id);
 
 		redirect('admin/CrudWarga', 'refresh'); 
 	}

@@ -43,7 +43,7 @@
           </a>
         </li>
         <li>
-          <a href="<?= site_url()?>rt/surat">
+          <a href="<?= site_url()?>rt/crudsurat">
             <i class="fa fa-envelope"></i> <span>Surat Pengantar</span>
           </a>
         </li>

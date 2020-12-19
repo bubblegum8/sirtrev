@@ -13,12 +13,12 @@
     <!-- Content Header (Page header) -->
 <section class="content-header">
       <h1>
-        DATA RT
+        DATA WILAYAH
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Data RT</li>
+        <li class="active">Data Wilayah</li>
       </ol>
     </section>
     <section class="content">
@@ -43,34 +43,36 @@
                 <thead>
                 <tr>
                 <th>NO</th>
+                <th>No Wilayah</th>
                 <th>Provinsi</th>
-                <th>Kota/Kabupaten</th>
+                <th>Kota</th>
                 <th>Kecamatan</th>
-                <th>Kelurahan/Desa</th>
+                <th>Kelurahan</th>
                 <th>RW</th>
                 <th>RT</th>
                 <th>AKSI</th>
                 </tr>
-                </thead>
                 <tbody>
-                <?php 
-                $no = 1;
-                foreach($wilayah as $wilayah){ 
-                ?>                
-                <tr>
-                    <td><?php echo $no++         ?></td>
-                    <td><?php echo $wilayah->provinsi ?></td>
-                    <td><?php echo $wilayah->kota     ?></td>
-                    <td><?php echo $wilayah->kecamatan?></td>
-                    <td><?php echo $wilayah->kelurahan?></td>
-                    <td><?php echo $wilayah->rw       ?></td>
-                    <td><?php echo $wilayah->rt        ?></td>
-                    <td>
-                    <a href="<?= site_url('admin/CrudRt/edit/'.$wilayah->id_wilayah)?>" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
-                    <a href="<?= site_url('admin/CrudRt/hapus/'.$wilayah->id_wilayah)?>" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
-                </td>
-                </tr>
-                <?php } ?>
+                <?php
+                $i = 1;
+                foreach ($data as $row) {
+                    echo '<tr>';  
+                    echo '<td>'.$i.'</td>
+                            <td>'.$row->id_wilayah.'</td>
+                            <td>'.$row->provinsi.'</td>
+                            <td>'.$row->kota.'</td>
+                            <td>'.$row->kecamatan.'</td>
+                            <td>'.$row->kelurahan.'</td>
+                            <td>'.$row->rw.'</td>
+                            <td>'.$row->rt.'</td>
+                            <td>
+                            <a href="'.base_url("admin/CrudRt/edit/$row->id_wilayah").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="'.base_url("admin/CrudRt/hapus/$row->id_wilayah").'" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>';
+                    echo '</tr>';
+                    $i++;
+                }              
+                ?> 
                 </tbody>
             </table>
         <ul class="pagination pagination-sm no-margin pull-right">

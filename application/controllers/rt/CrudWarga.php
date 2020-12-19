@@ -27,34 +27,6 @@ class CrudWarga extends CI_Controller{
 	}
 
 	function submit_tambah(){
-		$input['nik'] 	= $this->input->post('nik');
-		$input['nama'] 	= $this->input->post('nama');
-		$input['tanggal_lahir'] 		= $this->input->post('tanggal_lahir');
-		$input['jk'] 	= $this->input->post('jk');
-		$input['alamat'] 	= $this->input->post('alamat');
-		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
-
-		$this->CrudWarga_m->input_data('detail_keluarga', $input);
-
-		redirect('rt/CrudAkun', 'refresh');
-
-	}
-
-	function hapus(){
-		$nik = $this->uri->segment('3');
-		$this->CrudWarga_m->hapus_data($nik);
-		redirect('rt/CrudWarga', 'refresh');
-	}
-
-	function edit(){
-		$nik = $this->uri->segment('3');
-		$result = $this->CrudWarga_m->display_row($nik);
-		$result['aksi'] = 'submit_edit';
-		$result['judul'] = 'EDIT WARGA';
-		$this->load->view('rt/tambahwarga', $result);
-	}
-
-	function submit_edit(){
 		$input['nik'] 			= $this->input->post('nik');
 		$input['nama'] 			= $this->input->post('nama');
 		$input['tanggal_lahir'] = $this->input->post('tanggal_lahir');
@@ -62,7 +34,35 @@ class CrudWarga extends CI_Controller{
 		$input['alamat'] 		= $this->input->post('alamat');
 		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
 
-		$this->CrudAkun_m->update_data($input);
+		$this->CrudWarga_m->input_data('detail_keluarga', $input);
+
+		redirect('rt/CrudWarga', 'refresh');
+
+	}
+
+	function hapus(){
+		$nik = $this->uri->segment('4');
+		$this->CrudWarga_m->hapus_data($nik);
+		redirect('rt/CrudWarga', 'refresh');
+	}
+
+	function edit(){
+		$nik = $this->uri->segment('4');
+		$result = $this->CrudWarga_m->display_row($nik);
+		$result['aksi'] = 'submit_edit';
+		$result['judul'] = 'EDIT WARGA';
+		$this->load->view('rt/tambahwarga', $result);
+	}
+
+	function submit_edit(){
+		$id 		 			= $this->input->post('nik');
+		$input['nama'] 			= $this->input->post('nama');
+		$input['tanggal_lahir']	= $this->input->post('tanggal_lahir');
+		$input['jk'] 			= $this->input->post('jk');
+		$input['alamat'] 		= $this->input->post('alamat');
+		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
+
+		$this->CrudWarga_m->updateWarga($input, $id);
 
 		redirect('rt/CrudWarga', 'refresh'); 
 	}

@@ -9,70 +9,64 @@ class CrudRt extends CI_Controller{
 	}
  
 	function index(){
-		$data['wilayah'] = $this->CrudRt_m->tampil_data()->result();
-		$this->load->view('admin/datart',$data);
+		$result['data'] = $this->CrudRt_m->tampil_data();
+		$this->load->view('admin/datart', $result);
+
 	}
 
 	function tambah(){
-		$this->load->view('admin/tambahrt');
-	}
-	// menghandel inputan dari form
-	function tambah_aksi(){
-		$provinsi 	= $this->input->post('provinsi');
-		$kota 		= $this->input->post('kota');
-		$kecamatan 	= $this->input->post('kecamatan');
-		$kelurahan 	= $this->input->post('kelurahan');
-		$rw 		= $this->input->post('rw');
-		$rt 		= $this->input->post('rt');
- 
-		$data = array(
-			'provinsi' 	=> $provinsi,
-			'kota'		=> $kota,
-			'kecamatan' => $kecamatan,
-			'kelurahan' => $kelurahan,
-			'rw' 		=> $rw,
-			'rt' 		=> $rt
-			);
-		$this->CrudRt_m->input_data($data,'wilayah');
-		redirect('admin/crudrt/index');
+		$result['id_wilayah'] = '';
+		$result['provinsi'] = '';
+		$result['kota'] = '';
+		$result['kecamatan'] = '';
+		$result['kelurahan'] = '';
+		$result['rw'] = '';
+		$result['rt'] = '';
+		$result['aksi'] = 'submit_tambah';
+		$result['judul'] = 'TAMBAH WILAYAH';
+		$this->load->view('admin/tambahrt', $result);
 	}
 
-	function hapus($id_wilayah){
-		$where = array('id_wilayah' => $id_wilayah);
-		$this->CrudRt_m->hapus_data($where,'wilayah');
-		redirect('admin/crudrt/index');
+	function submit_tambah(){
+		$input['id_wilayah']	= $this->input->post('id_wilayah');
+		$input['provinsi'] 		= $this->input->post('provinsi');
+		$input['kota']			= $this->input->post('kota');
+		$input['kecamatan'] 	= $this->input->post('kecamatan');
+		$input['kelurahan'] 	= $this->input->post('kelurahan');
+		$input['rw'] 			= $this->input->post('rw');
+		$input['rt'] 			= $this->input->post('rt');
+
+		$this->CrudRt_m->input_data('wilayah', $input);
+
+		redirect('admin/CrudRt', 'refresh');
+
 	}
 
-	function edit($id_wilayah){
-		$where = array('id_wilayah' => $id_wilayah);
-		$data['wilayah'] = $this->CrudRt_m->edit_data($where,'wilayah')->result();
-		$this->load->view('admin/editrt',$data);
+	function hapus(){
+		$id_wilayah = $this->uri->segment('4');
+		$this->CrudRt_m->hapus_data($id_wilayah);
+		redirect('admin/CrudRt', 'refresh');
 	}
 
-	function update(){
-	$id_wilayah 		= $this->input->post('id_wilayah');
-	$provinsi 	= $this->input->post('provinsi');
-	$kota 		= $this->input->post('kota');
-	$kecamatan 	= $this->input->post('kecamatan');
-	$kelurahan 	= $this->input->post('kelurahan');
-	$rw 		= $this->input->post('rw');
-	$rt 		= $this->input->post('rt');
- 
-	$data = array(
-		'provinsi' 	=> $provinsi,
-		'kota'		=> $kota,
-		'kecamatan' => $kecamatan,
-		'kelurahan' => $kelurahan,
-		'rw' 		=> $rw,
-		'rt' 		=> $rt
-	);
- 
-	$where = array(
-		'id_wilayah' => $id_wilayah
-	);
- 
-	$this->CrudRt_m->update_data($where,$data,'wilayah');
-	redirect('admin/crudrt/index');
+	function edit(){
+		$id_wilayah = $this->uri->segment('4');
+		$result = $this->CrudRt_m->display_row($id_wilayah);
+		$result['aksi'] = 'submit_edit';
+		$result['judul'] = 'EDIT WILAYAH';
+		$this->load->view('admin/tambahrt', $result);
+	}
 
-}
+	function submit_edit(){
+		$id 					= $this->input->post('id_wilayah');
+		$input['provinsi'] 		= $this->input->post('provinsi');
+		$input['kota']			= $this->input->post('kota');
+		$input['kecamatan'] 	= $this->input->post('kecamatan');
+		$input['kelurahan'] 	= $this->input->post('kelurahan');
+		$input['rw'] 			= $this->input->post('rw');
+		$input['rt'] 			= $this->input->post('rt');
+
+		$this->CrudRt_m->updateRt($input, $id);
+
+		redirect('admin/CrudRt', 'refresh'); 
+	}
 }

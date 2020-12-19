@@ -1,25 +1,34 @@
 <?php 
  
 class CrudRt_m extends CI_Model{
+
 	function tampil_data(){
-		return $this->db->get('wilayah');
+		$query = $this->db->query("SELECT * from wilayah");
+        $data = $query->result();
+
+        return $data;
 	}
  
-	function input_data($data,$table){
+	function input_data($table,$data){
 		$this->db->insert($table,$data);
 	}
  
-	function hapus_data($where,$table){
-		$this->db->where($where);
-		$this->db->delete($table);
+	function hapus_data($id_wilayah){
+		$this->db->where('id_wilayah', $id_wilayah);
+		$this->db->delete('wilayah');
 	}
  
-	function edit_data($where,$table){		
-		return $this->db->get_where($table,$where);
+	function display_row($id_wilayah){		
+		$query = $this->db->query("select * from wilayah WHERE id_wilayah = '".$id_wilayah."'");
+
+        foreach ($query->result_array() as $row)
+		{
+	       return $row;
+		}
 	}
  
-	function update_data($where,$data,$table){
-		$this->db->where($where);
-		$this->db->update($table,$data);
-	}	
+	 public function updateRt($data, $id){
+        $this->db->where("id_wilayah", $id);
+        $this->db->update("wilayah", $data);
+    }
 }

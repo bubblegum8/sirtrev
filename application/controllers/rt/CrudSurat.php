@@ -1,5 +1,4 @@
-<?php 
- 
+<?php
 class CrudSurat extends CI_Controller{
  
 	function __construct(){
@@ -25,25 +24,24 @@ class CrudSurat extends CI_Controller{
 	}
 
 	function submit_tambah(){
-		$input['id_surat'] 		= $this->input->post('id_surat');
 		$input['jenis_surat'] 	= $this->input->post('jenis_surat');
 		$input['keterangan'] 	= $this->input->post('keterangan');
 		$input['tanggal'] 		= $this->input->post('tanggal');
 
-		$this->CrudWarga_m->input_data('surat', $input);
+		$this->CrudSurat_m->input_data('suratpengantar', $input);
 
 		redirect('rt/CrudSurat', 'refresh');
 
 	}
 
 	function hapus(){
-		$id_surat = $this->uri->segment('3');
+		$id_surat = $this->uri->segment('4');
 		$this->CrudSurat_m->hapus_data($id_surat);
 		redirect('rt/CrudSurat', 'refresh');
 	}
 
 	function edit(){
-		$id_surat = $this->uri->segment('3');
+		$id_surat = $this->uri->segment('4');
 		$result = $this->CrudSurat_m->display_row($id_surat);
 		$result['aksi'] = 'submit_edit';
 		$result['judul'] = 'UBAH PENGAJUAN SURAT';
@@ -51,13 +49,13 @@ class CrudSurat extends CI_Controller{
 	}
 
 	function submit_edit(){
-		$input['id_surat'] 				= $this->input->post('id_surat');
-		$input['jenis_surat'] 			= $this->input->post('jenis_surat');
-		$input['keterangan'] 			= $this->input->post('keterangan');
-		$input['tanggal']	 			= $this->input->post('tanggal');
-		
-		$this->CrudSurat->update_data($input);
+		$id 		 			= $this->input->post('id_surat');
+		$input['nama'] 			= $this->input->post('jenis_surat');
+		$input['tanggal_lahir']	= $this->input->post('keterangan');
+		$input['jk'] 			= $this->input->post('tanggal');
 
-		redirect('rt/CrudSurat', 'refresh'); 
+		$this->CrudSurat_m->updateSurat($input, $id);
+
+		redirect('rt/CrudWarga', 'refresh'); 
 	}
 }

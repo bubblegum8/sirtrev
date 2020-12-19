@@ -13,12 +13,12 @@
 
 <section class="content-header">
     <!-- Content Header (Page header) -->
-    <h1>
-        TAMBAH DATA RT
+     <h1>
+        <?= $judul;?>
     </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Tambah Data RT</li>
+        <li class="active"><?= $judul;?></li>
       </ol>
     </section>
     <?php if ($this->session->flashdata('success')): ?>
@@ -36,54 +36,62 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'admin/CrudRt/tambah_aksi';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url().'admin/CrudRt/'.$aksi.'';?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
-                <label for="Provinsi">PROVINSI</label>
+                <label for="no_wilayah">Nomor Wilayah</label>
+                <input class="form-control <?php echo form_error('id_wilayah') ? 'is-invalid':'' ?>" 
+                type="text" name="id_wilayah" placeholder="Nomor Wilayah" value="<?=$id_wilayah?>"/>
+                <div class="invalid-feedback">
+                <?php echo form_error('id_wilayah') ?>
+                </div>
+                </div>
+                <div class="form-group">
+                <label for="provinsi">Provinsi</label>
                 <input class="form-control <?php echo form_error('provinsi') ? 'is-invalid':'' ?>" 
-              type="text" name="provinsi" placeholder="Provinsi"/>
-                            <div class="invalid-feedback">
-                  <?php echo form_error('provinsi') ?>
+                type="text" name="provinsi" placeholder="Provinsi" value="<?=$provinsi;?>"/>
+                <div class="invalid-feedback">
+                <?php echo form_error('provinsi') ?>
                 </div>
                 </div>
                 <div class="form-group">
-                <label for="Kota">KOTA/KABUPATEN</label>
+                <label for="kota">Kota</label>
                 <input class="form-control <?php echo form_error('kota') ? 'is-invalid':'' ?>" 
-              type="text" name="kota" placeholder="Kota/Kabupaten"/>
-                            <div class="invalid-feedback">
-                  <?php echo form_error('kota') ?>
+                type="text" name="kota" placeholder="Kota/Kabupaten" value="<?=$kota;?>"/>
+                <div class="invalid-feedback">
+                <?php echo form_error('kota') ?>
                 </div>
                 </div>
                 <div class="form-group">
-                <label for="Kecamatan">KECAMATAN</label>
+                <label for="kecamatan">Kecamatan</label>
                 <input class="form-control <?php echo form_error('kecamatan') ? 'is-invalid':'' ?>" 
-                type="text" name="kecamatan" placeholder="Kecamatan"/>
-                            <div class="invalid-feedback">
-                  <?php echo form_error('kecamatan') ?>
+                type="text" name="kecamatan" placeholder="Kecamatan" value="<?=$kecamatan;?>"/>
+                <div class="invalid-feedback">
+                <?php echo form_error('kecamatan') ?>
                 </div>
                 </div>
                 <div class="form-group">
-                <label for="Kelurahan">KELURAHAN/DESA</label>
+                <label for="kelurahan">kelurahan</label>
                 <input class="form-control <?php echo form_error('kelurahan') ? 'is-invalid':'' ?>" 
-                type="text" name="kelurahan" placeholder="Kelurahan"/>
-                            <div class="invalid-feedback">
-                  <?php echo form_error('kelurahan') ?>
+                type="text" name="kelurahan" placeholder="Kelurahan" value="<?=$kelurahan;?>"/>
+                <div class="invalid-feedback">
+                <?php echo form_error('kelurahan') ?>
                 </div>
                 </div>
                 <div class="form-group">
                 <label for="RW">RW</label>
                 <input class="form-control <?php echo form_error('rw') ? 'is-invalid':'' ?>" 
-                type="text" name="rw" placeholder="RW"/>
-                            <div class="invalid-feedback">
-                  <?php echo form_error('rw') ?>
+                type="text" name="rw" placeholder="RW" value="<?=$rw;?>"/>
+                <div class="invalid-feedback">
+                <?php echo form_error('rw') ?>
                 </div>
                 </div>
                 <div class="form-group">
                 <label for="RT">RT</label>
                 <input class="form-control <?php echo form_error('rt') ? 'is-invalid':'' ?>" 
-                type="text" name="rt" placeholder="RT"/>
-                            <div class="invalid-feedback">
-                  <?php echo form_error('rt') ?>
+                type="text" name="rt" placeholder="RT" value="<?=$rt;?>"/>
+                <div class="invalid-feedback">
+                <?php echo form_error('rt') ?>
                 </div>
                 </div>
               </div>
