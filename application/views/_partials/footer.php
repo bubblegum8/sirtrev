@@ -6,3 +6,6 @@
     <strong>Copyright &copy; 2020-2021 <a href="">SIRT</a>.</strong> All rights
     reserved.
   </footer>
+
+  <div class="control-sidebar-bg"></div>
+</div>

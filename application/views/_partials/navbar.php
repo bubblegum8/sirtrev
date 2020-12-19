@@ -1,6 +1,8 @@
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 <header class="main-header">
     <!-- Logo -->
-    <a href="<?= base_url()?>assets/admin/index2.html" class="logo">
+    <a href="<?= site_url()?>warga/dashboard" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>SIRT</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -29,7 +31,7 @@
                   <li><!-- start message -->
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?= base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <img src="<?= base_url()?>assets/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Support Team
@@ -42,7 +44,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?= base_url()?>assets/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?= base_url()?>assets/admin/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         AdminLTE Design Team
@@ -54,7 +56,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?= base_url()?>assets/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?= base_url()?>assets/admin/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Developers
@@ -66,7 +68,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?= base_url()?>assets/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?= base_url()?>assets/admin/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Sales Department
@@ -78,7 +80,7 @@
                   <li>
                     <a href="#">
                       <div class="pull-left">
-                        <img src="<?= base_url()?>assets/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                        <img src="<?= base_url()?>assets/admin/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
                         Reviewers
@@ -224,7 +226,7 @@
                 <img src="<?= base_url()?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                RT
+                  <?php echo $this->session->userdata("name")?>
                   <small>Indonesia</small>
                 </p>
               </li>
@@ -234,7 +236,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?=base_url('rt/dashboard/logout')?>" class="btn btn-default btn-flat bg-red">Sign out</a>
+                  <a href="<?=site_url('warga/dashboard/logout')?>" class="btn btn-default btn-flat bg-red">Sign out</a>
                 </div>
               </li>
             </ul>

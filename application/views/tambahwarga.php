@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php $this->load->view("admin/_partials/head.php") ?>
+<?php $this->load->view("_partials/head.php") ?>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-<?php $this->load->view("admin/_partials/navbar.php") ?>
-<?php $this->load->view("admin/_partials/sidebar.php") ?>
+<?php $this->load->view("_partials/navbar.php") ?>
+<?php $this->load->view("_partials/sidebar.php") ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="min-height: 389px;">
@@ -36,7 +36,7 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'admin/CrudWarga/'.$aksi.'';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url().'Crud'.$aksi.'';?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
                 <label for="NIK">NIK</label>
@@ -51,8 +51,10 @@
                 <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" 
                             type="text" name="nama" placeholder="Nama" value="<?=$nama;?>" required/>
                             <div class="invalid-feedback">
-                                    <?php echo form_error('nama') ?>
-                                </div>
+                                <?php echo form_error('nama') ?>
+                            </div>
+                <input class="form-control" type="hidden" name="id_wilayah" placeholder="Nama" value="<?=$id_wilayah;?>" readonly/>
+                <input class="form-control" type="hidden" name="nkk" placeholder="Nama" value="<?=$nkk;?>" readonly/> 
                 </div>
                 
                 <div class="form-group">
@@ -100,12 +102,12 @@
     <!-- /.content -->
   </div>
 <!-- /.content-wrapper -->
-<?php $this->load->view("admin/_partials/footer.php")?>
+<?php $this->load->view("_partials/footer.php")?>
 
 <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
-<?php $this->load->view("admin/_partials/js.php")?>
+<?php $this->load->view("_partials/js.php")?>
 </body>
 </html>

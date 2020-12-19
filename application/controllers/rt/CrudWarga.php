@@ -11,7 +11,14 @@ class CrudWarga extends CI_Controller{
 	function index(){
 		$id_wilayah = $this->session->userdata('id_wilayah');
 		$result['data'] = $this->CrudWarga_m->tampil_warga($id_wilayah);
-		$this->load->view('rt/datawarga', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'RT';
+
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('datawarga', $result);
+		$this->load->view("_partials/footer");
 
 	}
 
