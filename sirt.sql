@@ -27,10 +27,11 @@ CREATE TABLE IF NOT EXISTS `detail_keluarga` (
   PRIMARY KEY (`nik`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Membuang data untuk tabel sirt.detail_keluarga: ~1 rows (lebih kurang)
+-- Membuang data untuk tabel sirt.detail_keluarga: ~3 rows (lebih kurang)
 /*!40000 ALTER TABLE `detail_keluarga` DISABLE KEYS */;
 INSERT INTO `detail_keluarga` (`nik`, `nama`, `tanggal_lahir`, `jk`, `alamat`, `pekerjaan`) VALUES
-	(123456, 'Farhan', NULL, 'L', 'majalengka', 'animator');
+	(123456, 'Toni', '2020-12-04', 'L', 'bandung', 'animator'),
+	(1234567, 'riki', '2020-12-19', 'L', 'Bandung', 'Programmer');
 /*!40000 ALTER TABLE `detail_keluarga` ENABLE KEYS */;
 
 -- membuang struktur untuk table sirt.keluarga
@@ -62,7 +63,27 @@ CREATE TABLE IF NOT EXISTS `suratpengantar` (
 
 -- Membuang data untuk tabel sirt.suratpengantar: ~0 rows (lebih kurang)
 /*!40000 ALTER TABLE `suratpengantar` DISABLE KEYS */;
+INSERT INTO `suratpengantar` (`id_surat`, `jenis_surat`, `keterangan`, `tanggal`) VALUES
+	(0, 'Surat Pengantar KTP', 'Surat untuk membuat KTP', '2020-12-15');
 /*!40000 ALTER TABLE `suratpengantar` ENABLE KEYS */;
+
+-- membuang struktur untuk table sirt.wilayah
+CREATE TABLE IF NOT EXISTS `wilayah` (
+  `id_wilayah` bigint(20) NOT NULL,
+  `provinsi` varchar(50) DEFAULT NULL,
+  `kota` varchar(50) DEFAULT NULL,
+  `kecamatan` varchar(50) DEFAULT NULL,
+  `kelurahan` varchar(50) DEFAULT NULL,
+  `rw` varchar(50) DEFAULT NULL,
+  `rt` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_wilayah`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Membuang data untuk tabel sirt.wilayah: ~0 rows (lebih kurang)
+/*!40000 ALTER TABLE `wilayah` DISABLE KEYS */;
+INSERT INTO `wilayah` (`id_wilayah`, `provinsi`, `kota`, `kecamatan`, `kelurahan`, `rw`, `rt`) VALUES
+	(1, 'Jawa Barat', 'Bandung', 'Cileunyi', 'Cimekar', '21', '01');
+/*!40000 ALTER TABLE `wilayah` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
