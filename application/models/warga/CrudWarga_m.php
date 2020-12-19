@@ -2,8 +2,8 @@
  
 class CrudWarga_m extends CI_Model{
 
-	function tampil_data(){
-		$query = $this->db->query("SELECT * from detail_keluarga");
+	function tampil_keluarga($nkk){
+		$query = $this->db->query("SELECT * from detail_keluarga where nkk =".$nkk."");
         $data = $query->result();
 
         return $data;

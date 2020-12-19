@@ -9,7 +9,8 @@ class CrudWarga extends CI_Controller{
 	}
  
 	function index(){
-		$result['data'] = $this->CrudWarga_m->tampil_data();
+		$nkk = $this->session->userdata('nkk');
+		$result['data'] = $this->CrudWarga_m->tampil_keluarga($nkk);
 		$this->load->view('warga/datawarga', $result);
 
 	}
@@ -23,12 +24,16 @@ class CrudWarga extends CI_Controller{
 		$result['pekerjaan'] = '';
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'TAMBAH WARGA';
+		$result['id_wilayah'] = $this->session->userdata('id_wilayah');
+		$result['nkk'] = $this->session->userdata('nkk');
 		$this->load->view('warga/tambahwarga', $result);
 	}
 
 	function submit_tambah(){
 		$input['nik'] 			= $this->input->post('nik');
+		$input['nkk'] 			= $this->input->post('nkk');
 		$input['nama'] 			= $this->input->post('nama');
+		$input['id_wilayah']	= $this->input->post('id_wilayah');
 		$input['tanggal_lahir'] = $this->input->post('tanggal_lahir');
 		$input['jk'] 			= $this->input->post('jk');
 		$input['alamat'] 		= $this->input->post('alamat');
