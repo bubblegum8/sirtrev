@@ -10,7 +10,13 @@ class CrudWarga extends CI_Controller{
  
 	function index(){
 		$result['data'] = $this->CrudWarga_m->tampil_data();
-		$this->load->view('admin/datawarga', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'admin';
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('datawarga', $result);
+		$this->load->view("_partials/footer");
 
 	}
 
@@ -23,7 +29,12 @@ class CrudWarga extends CI_Controller{
 		$result['pekerjaan'] = '';
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'TAMBAH WARGA';
-		$this->load->view('admin/tambahwarga', $result);
+
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('tambahwarga', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_tambah(){

@@ -3,14 +3,14 @@ class CrudSurat extends CI_Controller{
  
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('rt/CrudSurat_m');
+		$this->load->model('warga/CrudSurat_m');
         $this->load->helper('url');
 	}
  
 	function index(){
 		$result['data'] = $this->CrudSurat_m->tampil_data();
 		$result['role'] = $this->session->userdata('role');
-		$result['menu'] = 'RT';
+		$result['menu'] = 'warga';
 
 		$this->load->view('_partials/head');
 		$this->load->view("_partials/navbar");
@@ -26,7 +26,7 @@ class CrudSurat extends CI_Controller{
 		$result['tanggal'] = '';
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'PENGAJUAN SURAT';
-		$this->load->view('rt/tambahsurat', $result);
+		$this->load->view('warga/tambahsurat', $result);
 	}
 
 	function submit_tambah(){
@@ -36,14 +36,14 @@ class CrudSurat extends CI_Controller{
 
 		$this->CrudSurat_m->input_data('suratpengantar', $input);
 
-		redirect('rt/CrudSurat', 'refresh');
+		redirect('warga/CrudSurat', 'refresh');
 
 	}
 
 	function hapus(){
 		$id_surat = $this->uri->segment('4');
 		$this->CrudSurat_m->hapus_data($id_surat);
-		redirect('rt/CrudSurat', 'refresh');
+		redirect('warga/CrudSurat', 'refresh');
 	}
 
 	function edit(){
@@ -51,7 +51,7 @@ class CrudSurat extends CI_Controller{
 		$result = $this->CrudSurat_m->display_row($id_surat);
 		$result['aksi'] = 'submit_edit';
 		$result['judul'] = 'UBAH PENGAJUAN SURAT';
-		$this->load->view('rt/tambahsurat', $result);
+		$this->load->view('warga/tambahsurat', $result);
 	}
 
 	function submit_edit(){
@@ -62,6 +62,6 @@ class CrudSurat extends CI_Controller{
 
 		$this->CrudSurat_m->updateSurat($input, $id);
 
-		redirect('rt/CrudSurat', 'refresh'); 
+		redirect('warga/CrudSurat', 'refresh'); 
 	}
 }

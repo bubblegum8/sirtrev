@@ -30,32 +30,20 @@
         if($role == 'warga'){
         echo'
             <li>
-              <a href="<?= site_url()?>warga/dashboard">
+              <a href="'.site_url().'warga/dashboard">
                 <i class="fa fa-home"></i> <span>Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="<?= site_url()?>warga/crudwarga">
+              <a href="'.site_url().'warga/crudwarga">
                 <i class="fa fa-users"></i>
                 <span>Profil Keluarga</span>
               </a>
             </li>
             <li>
-              <a href="<?= site_url()?>warga/surat">
+              <a href="'.site_url().'warga/crudsurat">
                 <i class="fa fa-envelope"></i>
                 <span>Surat Pengantar</span>
-              </a>
-            </li>
-            <li>
-              <a href="<?= site_url()?>warga/lapkeu">
-                <i class="fa fa-laptop"></i>
-                <span>Laporan Keuangan RT</span>
-              </a>
-            </li>
-            <li>
-              <a href="<?= site_url()?>warga/iuran">
-                <i class="fa fa-money"></i>
-                <span>Pembayaran Iuran RT</span>
               </a>
             </li>';
           }
@@ -74,21 +62,9 @@
               </a>
             </li>
             <li>
-              <a href="<?= site_url()?>rt/surat">
+              <a href="'.site_url().'rt/crudsurat">
                 <i class="fa fa-envelope"></i>
-                <span>Statistik Warga</span>
-              </a>
-            </li>
-            <li>
-              <a href="<?= site_url()?>rt/lapkeu">
-                <i class="fa fa-laptop"></i>
                 <span>Surat Pengantar</span>
-              </a>
-            </li>
-            <li>
-              <a href="<?= site_url()?>rt/iuran">
-                <i class="fa fa-money"></i>
-                <span>Laporan Keuangan</span>
               </a>
             </li>';
           }
@@ -96,24 +72,24 @@
           else if($role == 'admin'){
         echo'
             <li>
-              <a href="<?= site_url()?>admin/dashboard">
+              <a href="'.site_url().'admin/dashboard">
                 <i class="fa fa-home"></i> <span>Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="<?= site_url()?>admin/crudwarga">
+              <a href="'.site_url().'admin/crudrt">
                 <i class="fa fa-users"></i>
                 <span>Data RT</span>
               </a>
             </li>
             <li>
-              <a href="<?= site_url()?>admin/surat">
+              <a href="'.site_url().'admin/crudwarga">
                 <i class="fa fa-envelope"></i>
                 <span>Data Warga</span>
               </a>
             </li>
             <li>
-              <a href="<?= site_url()?>admin/lapkeu">
+              <a href="'.site_url().'admin/crudakun">
                 <i class="fa fa-laptop"></i>
                 <span>Buat Akun</span>
               </a>

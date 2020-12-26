@@ -9,9 +9,16 @@ class CrudWarga extends CI_Controller{
 	}
  
 	function index(){
+
 		$nkk = $this->session->userdata('nkk');
 		$result['data'] = $this->CrudWarga_m->tampil_keluarga($nkk);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'Warga';
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
 		$this->load->view('datawarga', $result);
+		$this->load->view("_partials/footer");
 
 	}
 

@@ -11,7 +11,14 @@ class CrudAkun extends CI_Controller{
  
 	function index(){
 		$result['data'] = $this->CrudAkun_m->tampil_data();
-		$this->load->view('admin/buatakun/buatakun', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'admin';
+
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('buatakun', $result);
+		$this->load->view("_partials/footer");
 
 	}
 
