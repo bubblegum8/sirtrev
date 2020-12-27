@@ -26,7 +26,7 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'Crud'.$aksi.'';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url(''.$role.'/CrudWarga/'.$aksi.'');?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
                 <label for="NIK">NIK</label>
@@ -36,6 +36,23 @@
                                     <?php echo form_error('nik') ?>
                                 </div>
                 </div>
+
+                <div class="form-group">
+                  <label for="">NKK</label>
+                  <select class="form-control <?php echo form_error('jk') ? 'is-invalid':'' ?>" name="nkk" required>
+                    <?php
+                    foreach ($data as $row) {
+                      if($nkk == $row->nkk){
+                        echo '<option value="'.$row->nkk.'" selected>'.$row->nkk.'</option>';
+                      }
+                      else{
+                        echo '<option value="'.$row->nkk.'">'.$row->nkk.'</option>';
+                      }
+                    }
+                    ?>
+                  </select>
+                </div>
+
                 <div class="form-group">
                 <label for="Name">Nama</label>
                 <input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>" 
@@ -43,8 +60,7 @@
                             <div class="invalid-feedback">
                                 <?php echo form_error('nama') ?>
                             </div>
-                <input class="form-control" type="hidden" name="id_wilayah" placeholder="Nama" value="<?=$id_wilayah;?>" readonly/>
-                <input class="form-control" type="hidden" name="nkk" placeholder="Nama" value="<?=$nkk;?>" readonly/> 
+                <input class="form-control" type="hidden" name="id_wilayah" placeholder="Nama" value="<?=$id_wilayah;?>" readonly/> 
                 </div>
                 
                 <div class="form-group">

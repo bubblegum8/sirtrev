@@ -1,6 +1,6 @@
 <?php 
  
-class CrudRt_m extends CI_Model{
+class CrudWilayah_m extends CI_Model{
 
 	function tampil_data(){
 		$query = $this->db->query("SELECT * from wilayah");

@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<?php $this->load->view("admin/_partials/head.php") ?>
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-<?php $this->load->view("admin/_partials/navbar.php") ?>
-<?php $this->load->view("admin/_partials/sidebar.php") ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" style="min-height: 389px;">
@@ -36,7 +27,7 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'admin/CrudAkun/'.$aksi.'';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url(''.$role.'/CrudAkun/'.$aksi.'')?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
                 <label for="username">NKK</label>
@@ -44,7 +35,20 @@
 							type="text" name="nkk" placeholder="NKK" value="<?=$nkk?>"/>
                             <div class="invalid-feedback">
 									<?php echo form_error('nkk') ?>
+                  <input class="form-control <?php echo form_error('nkkLama') ? 'is-invalid':'' ?>" 
+              type="hidden" name="nkkLama" placeholder="NKK" value="<?=$nkk?>"/>
+                            <div class="invalid-feedback">
+                  <?php echo form_error('nkkLama') ?>
 								</div>
+                </div>
+                </div>
+                <div class="form-group">
+                <label for="username">id wilayah</label>
+                <input class="form-control <?php echo form_error('id_wilayah') ? 'is-invalid':'' ?>" 
+              type="text" name="id_wilayah" placeholder="id_wilayah" value="<?=$id_wilayah?>" readonly/>
+                            <div class="invalid-feedback">
+                  <?php echo form_error('id_wilayah') ?>
+                </div>
                 </div>
                 <div class="form-group">
                 <label for="Password">PASSWORD</label>
@@ -81,13 +85,43 @@
     </section>
     <!-- /.content -->
   </div>
-<!-- /.content-wrapper -->
-<?php $this->load->view("admin/_partials/footer.php")?>
 
-<div class="control-sidebar-bg"></div>
-</div>
-<!-- ./wrapper -->
-
-<?php $this->load->view("admin/_partials/js.php")?>
+<!-- jQuery 3 -->
+<script src="<?= base_url()?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?= base_url()?>assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?= base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="<?= base_url()?>assets/bower_components/raphael/raphael.min.js"></script>
+<script src="<?= base_url()?>assets/bower_components/morris.js/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="<?= base_url()?>assets/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="<?= base_url()?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?= base_url()?>assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?= base_url()?>assets/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="<?= base_url()?>assets/bower_components/moment/min/moment.min.js"></script>
+<script src="<?= base_url()?>assets/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="<?= base_url()?>assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="<?= base_url()?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="<?= base_url()?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?= base_url()?>assets/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?= base_url()?>assets/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?= base_url()?>assets/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?= base_url()?>assets/dist/js/demo.js"></script>
 </body>
 </html>

@@ -62,6 +62,12 @@
               </a>
             </li>
             <li>
+              <a href="'.site_url().'rt/crudakun">
+                <i class="fa fa-laptop"></i>
+                <span>Buat Akun</span>
+              </a>
+            </li>
+            <li>
               <a href="'.site_url().'rt/crudsurat">
                 <i class="fa fa-envelope"></i>
                 <span>Surat Pengantar</span>
@@ -79,7 +85,7 @@
             <li>
               <a href="'.site_url().'admin/crudrt">
                 <i class="fa fa-users"></i>
-                <span>Data RT</span>
+                <span>Data Wilayah</span>
               </a>
             </li>
             <li>

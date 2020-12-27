@@ -29,6 +29,11 @@ class CrudWarga extends CI_Controller{
 		$result['pekerjaan'] = '';
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'TAMBAH WARGA';
+		$result['role'] = $this->session->userdata('role');
+		$result['id_wilayah'] = $this->session->userdata('id_wilayah');
+		$result['menu'] = 'Admin';
+
+		$result['data'] = $this->CrudWarga_m->all();
 
 		$this->load->view('_partials/head');
 		$this->load->view("_partials/navbar");
@@ -62,11 +67,20 @@ class CrudWarga extends CI_Controller{
 		$result = $this->CrudWarga_m->display_row($nik);
 		$result['aksi'] = 'submit_edit';
 		$result['judul'] = 'EDIT WARGA';
-		$this->load->view('admin/tambahwarga', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'Admin';
+		$result['data'] = $this->CrudWarga_m->all();
+
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('tambahwarga', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_edit(){
 		$id 		 			= $this->input->post('nik');
+		$input['nkk'] 			= $this->input->post('nkk');
 		$input['nama'] 			= $this->input->post('nama');
 		$input['tanggal_lahir']	= $this->input->post('tanggal_lahir');
 		$input['jk'] 			= $this->input->post('jk');

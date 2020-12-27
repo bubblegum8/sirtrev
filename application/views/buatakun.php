@@ -18,7 +18,7 @@
         <div class="col-xs-12">
     <div class="box box-primary">
         <div class="box-header">
-        <a href="<?= site_url()?>admin/CrudAkun/tambah" class="btn btn-primary" role="button" title="Tambah Data"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
+        <a href="<?= site_url(''.$role.'/CrudAkun/tambah')?>" class="btn btn-primary" role="button" title="Tambah Data"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
         <div class="box-tools">
                 <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
                 <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -53,8 +53,8 @@
                             <td>'.$row->role.'</td>
                             <td>'.$row->created.'</td>
                             <td>
-                            <a href="'.base_url("admin/CrudAkun/edit/$row->nkk").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a href="'.base_url("admin/CrudAkun/hapus/$row->nkk").'" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
+                            <a href="'.base_url("".$role."/CrudAkun/edit/$row->nkk").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="'.base_url("".$role."/CrudAkun/hapus/$row->nkk").'" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
                             </td>';
                     echo '</tr>';
                     $i++;

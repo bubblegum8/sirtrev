@@ -17,7 +17,7 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header">
-                    <a href="<?= site_url()?>admin/CrudWarga/tambah" class="btn btn-primary" role="button" title="Tambah Data"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
+                    <a href="<?= site_url(''.$role.'/CrudWarga/tambah');?>" class="btn btn-primary" role="button" title="Tambah Data"><i class="glyphicon glyphicon-plus"></i> Tambah Data</a>
                     <div class="box-tools">
                         <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
@@ -35,6 +35,7 @@
                             <tr>
                                 <th>NO</th>
                                 <th>NIK</th>
+                                <th>NKK</th>
                                 <th>Nama</th>
                                 <th>Tanggal Lahir</th>
                                 <th>Jenis Kelamin</th>
@@ -50,13 +51,15 @@
                                 echo '<tr>';  
                                 echo '<td>'.$i.'</td>
                                 <td>'.$row->nik.'</td>
+                                <td>'.$row->nkk.'</td>
                                 <td>'.$row->nama.'</td>
                                 <td>'.$row->tanggal_lahir.'</td>
                                 <td>'.$row->jk.'</td>
                                 <td>'.$row->alamat.'</td>
                                 <td>'.$row->pekerjaan.'</td>
                                 <td>
-                                <a href="'.base_url("admin/CrudWarga/edit/$row->nik").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="'.base_url("".$role."/CrudWarga/edit/$row->nik").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
+                                 <a href="'.base_url("".$role."/CrudWarga/hapus/$row->nik").'" class="btn btn-danger" role="button" title="Ubah Data"><i class="glyphicon glyphicon-trash"></i></a>
                                 <a href="#" class="btn btn-primary" role="button" title="Ubah Data"><i class="glyphicon glyphicon-search"></i></a>
                                 </td>';
                                 echo '</tr>';

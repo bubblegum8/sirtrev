@@ -30,5 +30,12 @@ class CrudWarga_m extends CI_Model{
 	public function updateWarga($data, $id){
         $this->db->where("nik", $id);
         $this->db->update("detail_keluarga", $data);
-    }	
+    }
+
+    function all(){
+		$query = $this->db->query("SELECT * from keluarga");
+        $data = $query->result();
+
+        return $data;
+	}	
 }
