@@ -43,12 +43,19 @@
                 </div>
                 </div>
                 <div class="form-group">
-                <label for="username">id wilayah</label>
-                <input class="form-control <?php echo form_error('id_wilayah') ? 'is-invalid':'' ?>" 
-              type="text" name="id_wilayah" placeholder="id_wilayah" value="<?=$id_wilayah?>" readonly/>
-                            <div class="invalid-feedback">
-                  <?php echo form_error('id_wilayah') ?>
-                </div>
+                <label for="id_wilayah">ID Wilayah</label>
+                 <select class="form-control" name="id_wilayah" required>
+                    <?php
+                    foreach ($data as $row) {
+                      if($nkk == $row->id_wilayah){
+                        echo '<option value="'.$row->id_wilayah.'" selected>'.$row->id_wilayah.'</option>';
+                      }
+                      else{
+                        echo '<option value="'.$row->id_wilayah.'">'.$row->id_wilayah.'</option>';
+                      }
+                    }
+                    ?>
+                  </select>
                 </div>
                 <div class="form-group">
                 <label for="Password">PASSWORD</label>

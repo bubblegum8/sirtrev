@@ -67,7 +67,14 @@ class CrudRt extends CI_Controller{
 		$result = $this->CrudWilayah_m->display_row($id_wilayah);
 		$result['aksi'] = 'submit_edit';
 		$result['judul'] = 'EDIT WILAYAH';
-		$this->load->view('admin/tambahrt', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'Admin';
+
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('tambahrt', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_edit(){

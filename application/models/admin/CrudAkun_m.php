@@ -31,4 +31,11 @@ class CrudAkun_m extends CI_Model{
         $this->db->where("nkk", $id);
         $this->db->update("keluarga", $data);
     }
+
+    function all(){
+    	$query = $this->db->query("SELECT * from wilayah");
+        $data = $query->result();
+
+        return $data;
+    }
 }

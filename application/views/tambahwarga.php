@@ -39,7 +39,7 @@
 
                 <div class="form-group">
                   <label for="">NKK</label>
-                  <select class="form-control <?php echo form_error('jk') ? 'is-invalid':'' ?>" name="nkk" required>
+                  <select class="form-control" name="nkk" required>
                     <?php
                     foreach ($data as $row) {
                       if($nkk == $row->nkk){

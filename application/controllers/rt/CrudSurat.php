@@ -26,7 +26,14 @@ class CrudSurat extends CI_Controller{
 		$result['tanggal'] = '';
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'PENGAJUAN SURAT';
-		$this->load->view('rt/tambahsurat', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'RT';
+		
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('tambahsurat', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_tambah(){

@@ -32,7 +32,7 @@
                 <div class="form-group">
                 <label for="id_wilayah">ID Wilayah</label>
                 <input class="form-control <?php echo form_error('id_wilayah') ? 'is-invalid':'' ?>" 
-                            type="text" name="id_wilayah" placeholder="id_wilayah" value="" required readonly/>
+                            type="text" name="id_wilayah" placeholder="id_wilayah" value="<?=$id_wilayah?>" required readonly/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('id_wilayah') ?>
                                 </div>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                 <label for="provinsi">Provinsi</label>
                 <input class="form-control <?php echo form_error('provinsi') ? 'is-invalid':'' ?>" 
-                            type="text" name="provinsi" placeholder="Nama Provinsi" value="" required/>
+                            type="text" name="provinsi" placeholder="Nama Provinsi" value="<?=$provinsi?>" required/>
                             <div class="invalid-feedback">
                                 <?php echo form_error('provinsi') ?>
                             </div>
@@ -48,13 +48,13 @@
                 
                 <div class="form-group">
                   <label for="kota">Kota</label>
-                  <input type="text" name="kota" class="form-control <?php echo form_error('kota') ? 'is-invalid':'' ?>" value="" placeholder="Kota" required/>
+                  <input type="text" name="kota" class="form-control <?php echo form_error('kota') ? 'is-invalid':'' ?>" value="<?=$kota?>" placeholder="Kota" required/>
                 </div>
 
                 <div class="form-group">
                 <label for="kecamatan">Kecamatan</label>
                 <input class="form-control <?php echo form_error('kecamatan') ? 'is-invalid':'' ?>" 
-                            type="text" name="kecamatan" placeholder="kecamatan" value="" required/>
+                            type="text" name="kecamatan" placeholder="kecamatan" value="<?=$kecamatan?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('kecamatan') ?>
                                 </div>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                 <label for="kelurahan">Kelurahan</label>
                 <input class="form-control <?php echo form_error('kelurahan') ? 'is-invalid':'' ?>" 
-                            type="text" name="kelurahan" placeholder="kelurahan" value="" required/>
+                            type="text" name="kelurahan" placeholder="kelurahan" value="<?=$kelurahan?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('kelurahan') ?>
                                 </div>
@@ -72,7 +72,7 @@
                 <div class="form-group">
                 <label for="rw">RW</label>
                 <input class="form-control <?php echo form_error('rw') ? 'is-invalid':'' ?>" 
-                            type="text" name="rw" placeholder="rw" value="" required/>
+                            type="text" name="rw" placeholder="rw" value="<?=$rw?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('rw') ?>
                                 </div>
@@ -81,7 +81,7 @@
                  <div class="form-group">
                 <label for="rt">RT</label>
                 <input class="form-control <?php echo form_error('rt') ? 'is-invalid':'' ?>" 
-                            type="text" name="rt" placeholder="rt" value="" required/>
+                            type="text" name="rt" placeholder="rt" value="<?=$rt?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('rt') ?>
                                 </div>

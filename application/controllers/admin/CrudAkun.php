@@ -4,8 +4,7 @@ class CrudAkun extends CI_Controller{
  
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('admin/CrudAkun_m');
-		$this->load->model('admin/CrudRt_m');
+		$this->load->model('admin/CrudAkun_m');	
         $this->load->helper('url');
 	}
  
@@ -29,7 +28,17 @@ class CrudAkun extends CI_Controller{
 		$result['created'] = '';
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'TAMBAH AKUN';
-		$this->load->view('admin/buatakun/tambahakun', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['id_wilayah'] = $this->session->userdata('id_wilayah');
+		$result['menu'] = 'Admin';
+
+		$result['data'] = $this->CrudAkun_m->all();
+		
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('tambahakun', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_tambah(){
@@ -55,15 +64,24 @@ class CrudAkun extends CI_Controller{
 		$result = $this->CrudAkun_m->display_row($nkk);
 		$result['aksi'] = 'submit_edit';
 		$result['judul'] = 'EDIT AKUN';
-		$this->load->view('admin/buatakun/tambahakun', $result);
+		$result['role'] = $this->session->userdata('role');
+		$result['menu'] = 'Admin';
+		$result['data'] = $this->CrudAkun_m->all();
+
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
+		$this->load->view('tambahakun', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_edit(){
-		$id 				= $this->input->post('nkk');
-		$input['nkk']		= $this->input->post('nkk');
-		$input['password'] 	= $this->input->post('password');
-		$input['role'] 		= $this->input->post('role');
-		$input['created'] 	= $this->input->post('created');
+		$id 					= $this->input->post('nkkLama');
+		$input['nkk']			= $this->input->post('nkk');
+		$input['id_wilayah']	= $this->input->post('id_wilayah');
+		$input['password'] 		= $this->input->post('password');
+		$input['role'] 			= $this->input->post('role');
+		$input['created'] 		= $this->input->post('created');
 
 		$this->CrudAkun_m->updateAkun($input, $id);
 
