@@ -33,6 +33,7 @@
                 <thead>
                 <tr>
                 <th>NO</th>
+                <th>NIK</th>
                 <th>Jenis Surat</th>
                 <th>Keterangan</th>
                 <th>Tanggal Pembuatan</th>
@@ -45,12 +46,13 @@
                 foreach ($data as $row) {
                     echo '<tr>';  
                     echo '<td>'.$i.'</td>
+                            <td>'.$row->nik.'</td>
                             <td>'.$row->jenis_surat.'</td>
                             <td>'.$row->keterangan.'</td>
                             <td>'.$row->tanggal.'</td>
                             <td>
-                            <a href="'.base_url("rt/CrudSurat/edit/$row->id_surat").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
-                            <a href="'.base_url("rt/CrudSurat/hapus/$row->id_surat").'" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
+                            <a href="'.base_url("".$role."/CrudSurat/edit/$row->id_surat").'" class="btn btn-success" role="button" title="Ubah Data"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a href="'.base_url("".$role."/CrudSurat/hapus/$row->id_surat").'" class="btn btn-danger" role="button" title="Hapus Data"><i class="glyphicon glyphicon-trash"></i></a>
                             </td>';
                     echo '</tr>';
                     $i++;

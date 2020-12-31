@@ -2,8 +2,8 @@
  
 class CrudSurat_m extends CI_Model{
 
-	function tampil_data(){
-		$query = $this->db->query("SELECT * from suratpengantar");
+	function tampil_surat($nkk){
+		$query = $this->db->query("SELECT * from detail_keluarga where nkk =".$nkk."");
         $data = $query->result();
 
         return $data;
@@ -27,7 +27,7 @@ class CrudSurat_m extends CI_Model{
 		}
 	}
  
-	public function updateWarga($data, $id){
+	public function updateSurat($data, $id){
         $this->db->where("id_surat", $id);
         $this->db->update("suratpengantar", $data);
     }	

@@ -27,12 +27,29 @@
             <!-- /.box-header -->
            
             <!-- form start -->
-            <form  action="<?php echo base_url().'rt/CrudSurat/'.$aksi.'';?>" method="post" enctype="multipart/form-data">
+            <form  action="<?php echo base_url(''.$role.'/CrudSurat/'.$aksi.'');?>" method="post" enctype="multipart/form-data">
             <div class="box-body">
                 <div class="form-group">
+                  <label for="">NIK</label>
+                  <input class="form-control" type="hidden" name="id_surat" placeholder="Nama" value="<?=$id_surat;?>" readonly/> 
+                  <select class="form-control" name="nik" required>
+                    <?php
+                    foreach ($data as $row) {
+                      if($nik == $row->nik){
+                        echo '<option value="'.$row->nik.'" selected>'.$row->nik.'</option>';
+                      }
+                      else{
+                        echo '<option value="'.$row->nik.'">'.$row->nik.'</option>';
+                      }
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group">
                 <label for="JENIS SURAT">Jenis Surat</label>
+                <input class="form-control" type="hidden" name="id_wilayah" placeholder="Nama" value="<?=$id_wilayah;?>" readonly/> 
                 <input class="form-control <?php echo form_error('jenis_surat') ? 'is-invalid':'' ?>"
-                            type="text" name="jenis_surat" placeholder="Jenis Surat" value="<?=$jenis_surat?>"/>
+                            type="text" name="jenis_surat" placeholder="Jenis Surat" value="<?=$jenis_surat?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('jenis_surat') ?>
                                 </div>
@@ -40,7 +57,7 @@
                 <div class="form-group">
                 <label for="Keterangan">Keterangan</label>
                 <input class="form-control <?php echo form_error('keterangan') ? 'is-invalid':'' ?>" 
-                             type="text" name="keterangan" placeholder="Keterangan" value="<?=$keterangan;?>"/>
+                             type="text" name="keterangan" placeholder="Keterangan" value="<?=$keterangan;?>" required/>
                             <div class="invalid-feedback">
                                     <?php echo form_error('keterangan') ?>
                                 </div>
@@ -48,7 +65,7 @@
                 
                 <div class="form-group">
                   <label for="tanggal">Tanggal Pembuatan</label>
-                  <input type="date" name="tanggal" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" value="<?=$tanggal;?>"/>
+                  <input type="date" name="tanggal" class="form-control <?php echo form_error('tanggal') ? 'is-invalid':'' ?>" value="<?=$tanggal;?>" required/>
                 </div>
               </div>
               <!-- /.box-body -->

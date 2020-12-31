@@ -24,6 +24,7 @@ class CrudWarga extends CI_Controller{
 
 	function tambah(){
 		$result['nik'] = '';
+		$result['nkk'] = '';
 		$result['nama'] = '';
 		$result['tanggal_lahir'] = '';
 		$result['jk'] = '';
@@ -32,7 +33,6 @@ class CrudWarga extends CI_Controller{
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'TAMBAH WARGA';
 		$result['menu'] = 'RT';
-		$result['nkk'] = '';
 		$result['role'] = $this->session->userdata('role');
 		$result['id_wilayah'] = $this->session->userdata('id_wilayah');
 
