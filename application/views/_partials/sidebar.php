@@ -39,12 +39,6 @@
                 <i class="fa fa-users"></i>
                 <span>Profil Keluarga</span>
               </a>
-            </li>
-            <li>
-              <a href="'.site_url().'warga/crudsurat">
-                <i class="fa fa-envelope"></i>
-                <span>Surat Pengantar</span>
-              </a>
             </li>';
           }
 

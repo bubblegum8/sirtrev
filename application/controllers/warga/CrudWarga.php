@@ -31,9 +31,16 @@ class CrudWarga extends CI_Controller{
 		$result['pekerjaan'] = '';
 		$result['aksi'] = 'submit_tambah';
 		$result['judul'] = 'TAMBAH WARGA';
+		$result['role'] = $this->session->userdata('role');
 		$result['id_wilayah'] = $this->session->userdata('id_wilayah');
 		$result['nkk'] = $this->session->userdata('nkk');
+		$result['menu'] = 'Warga';
+		
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
 		$this->load->view('tambahwarga', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_tambah(){
@@ -61,9 +68,17 @@ class CrudWarga extends CI_Controller{
 	function edit(){
 		$nik = $this->uri->segment('4');
 		$result = $this->CrudWarga_m->display_row($nik);
+		$result['role'] = $this->session->userdata('role');
 		$result['aksi'] = 'submit_edit';
 		$result['judul'] = 'EDIT WARGA';
+		$result['menu'] = 'Warga';
+		$result['data'] = $this->CrudWarga_m->all($result);
+		
+		$this->load->view('_partials/head');
+		$this->load->view("_partials/navbar");
+		$this->load->view("_partials/sidebar", $result);
 		$this->load->view('tambahwarga', $result);
+		$this->load->view("_partials/footer");
 	}
 
 	function submit_edit(){

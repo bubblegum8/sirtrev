@@ -44,6 +44,7 @@ class CrudWarga extends CI_Controller{
 
 	function submit_tambah(){
 		$input['nik'] 			= $this->input->post('nik');
+		$input['nkk']			= $this->input->post('nkk');
 		$input['nama'] 			= $this->input->post('nama');
 		$input['tanggal_lahir'] = $this->input->post('tanggal_lahir');
 		$input['jk'] 			= $this->input->post('jk');

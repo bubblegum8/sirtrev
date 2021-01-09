@@ -40,7 +40,7 @@ class Login extends CI_Controller {
         }
        }
        else{
-        echo $login;
+        redirect('Login', 'refresh');
        }
     }
 

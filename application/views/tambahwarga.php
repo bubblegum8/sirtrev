@@ -95,6 +95,15 @@
                                 </div>
                 </div>
 
+                <div class="form-group">
+                <label for="Pekerjaan">Pekerjaan</label>
+                <input class="form-control <?php echo form_error('pekerjaan') ? 'is-invalid':'' ?>" 
+                            type="text" name="pekerjaan" placeholder="Pekerjaan" value="<?=$pekerjaan;?>" required/>
+                            <div class="invalid-feedback">
+                                    <?php echo form_error('pekerjaan') ?>
+                                </div>
+                </div>                
+
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
