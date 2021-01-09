@@ -95,14 +95,22 @@
                                 </div>
                 </div>
 
-                <div class="form-group">
-                <label for="Pekerjaan">Pekerjaan</label>
-                <input class="form-control <?php echo form_error('pekerjaan') ? 'is-invalid':'' ?>" 
-                            type="text" name="pekerjaan" placeholder="Pekerjaan" value="<?=$pekerjaan;?>" required/>
-                            <div class="invalid-feedback">
-                                    <?php echo form_error('pekerjaan') ?>
-                                </div>
-                </div>                
+                <?php
+                if($menu == 'Admin'){
+                ?>
+                      <div class="form-group">
+                        <label for="id_wilayah">ID Wilayah</label>
+                        <select class="form-control" name="id_wilayah" required>
+                          <?php
+                          foreach ($wilayah as $row) {
+                           echo '<option value="'.$row->id_wilayah.'">'.$row->id_wilayah.'</option>';
+                          }
+                          ?>
+                        </select>
+                      </div>
+                <?php
+                }
+                ?>                
 
               </div>
               <!-- /.box-body -->

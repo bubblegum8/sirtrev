@@ -5,6 +5,7 @@ class CrudWarga extends CI_Controller{
 	function __construct(){
 		parent::__construct();		
 		$this->load->model('admin/CrudWarga_m');
+		$this->load->model('admin/CrudWilayah_m');
         $this->load->helper('url');
 	}
  
@@ -34,6 +35,7 @@ class CrudWarga extends CI_Controller{
 		$result['menu'] = 'Admin';
 
 		$result['data'] = $this->CrudWarga_m->all();
+		$result['wilayah'] = $this->CrudWilayah_m->tampil_data();
 
 		$this->load->view('_partials/head');
 		$this->load->view("_partials/navbar");
@@ -50,6 +52,7 @@ class CrudWarga extends CI_Controller{
 		$input['jk'] 			= $this->input->post('jk');
 		$input['alamat'] 		= $this->input->post('alamat');
 		$input['pekerjaan'] 	= $this->input->post('pekerjaan');
+		$input['id_wilayah'] 	= $this->input->post('id_wilayah');
 
 		$this->CrudWarga_m->input_data('detail_keluarga', $input);
 
